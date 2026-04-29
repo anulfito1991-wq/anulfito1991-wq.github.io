@@ -36,7 +36,6 @@
       overflow-x: hidden;
     }
 
-    /* ── Animated background ── */
     body::before {
       content: "";
       position: fixed;
@@ -54,7 +53,7 @@
     /* ── Hero ── */
     header {
       text-align: center;
-      padding: 80px 24px 64px;
+      padding: 72px 24px 48px;
     }
 
     .hero-eyebrow {
@@ -103,7 +102,7 @@
       font-size: 1.05rem;
       color: var(--muted);
       max-width: 440px;
-      margin: 0 auto 40px;
+      margin: 0 auto 36px;
       line-height: 1.65;
     }
 
@@ -117,34 +116,19 @@
       backdrop-filter: blur(12px);
     }
 
-    .stat {
-      padding: 12px 24px;
-      text-align: center;
-      border-right: 1px solid var(--border);
-    }
-
+    .stat { padding: 12px 24px; text-align: center; border-right: 1px solid var(--border); }
     .stat:last-child { border-right: none; }
+    .stat-num { font-size: 1.4rem; font-weight: 700; color: #fff; display: block; }
+    .stat-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
 
-    .stat-num {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #fff;
-      display: block;
-    }
-
-    .stat-label {
-      font-size: 0.7rem;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    /* ── Section ── */
-    .section {
-      max-width: 1040px;
+    /* ── Layout ── */
+    .container {
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 0 24px 72px;
+      padding: 0 24px;
     }
+
+    .section { padding-bottom: 72px; }
 
     .section-header {
       display: flex;
@@ -161,16 +145,167 @@
       color: var(--muted);
     }
 
-    .section-line {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
+    .section-line { flex: 1; height: 1px; background: var(--border); }
+
+    /* ── Featured spotlight ── */
+    .featured {
+      position: relative;
+      background: linear-gradient(135deg, rgba(96,165,250,0.10) 0%, rgba(192,132,252,0.06) 100%);
+      border: 1px solid rgba(96,165,250,0.2);
+      border-radius: 24px;
+      padding: 40px;
+      overflow: hidden;
+      margin-bottom: 48px;
     }
+
+    .featured::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 80% 50%, rgba(96,165,250,0.15) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .featured-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--yellow);
+      background: rgba(251,191,36,0.1);
+      border: 1px solid rgba(251,191,36,0.25);
+      padding: 4px 12px;
+      border-radius: 99px;
+      margin-bottom: 18px;
+    }
+
+    .featured-pill::before { content: "★"; }
+
+    .featured-app-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .featured-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    }
+
+    .featured-name {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      color: #fff;
+      line-height: 1.1;
+    }
+
+    .featured-tagline {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .featured-desc {
+      font-size: 0.95rem;
+      color: rgba(240,240,240,0.85);
+      line-height: 1.65;
+      margin-bottom: 24px;
+    }
+
+    .featured-meta {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 24px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .featured-meta span { display: inline-flex; align-items: center; gap: 6px; }
+    .featured-meta strong { color: #fff; font-weight: 600; }
+
+    /* ── Phone mockups ── */
+    .phones {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      perspective: 1000px;
+    }
+
+    .phone {
+      flex: 0 0 auto;
+      width: 150px;
+      aspect-ratio: 9 / 19.5;
+      background: #000;
+      border-radius: 26px;
+      padding: 4px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05);
+      position: relative;
+      transition: transform 0.4s ease;
+    }
+
+    .phone img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 22px;
+      display: block;
+    }
+
+    .phone-1 { transform: rotate(-6deg) translateY(8px); z-index: 1; }
+    .phone-2 { transform: rotate(0deg); z-index: 3; width: 165px; }
+    .phone-3 { transform: rotate(6deg) translateY(8px); z-index: 1; }
+
+    .featured:hover .phone-1 { transform: rotate(-8deg) translateY(0px); }
+    .featured:hover .phone-2 { transform: rotate(0deg) translateY(-6px); }
+    .featured:hover .phone-3 { transform: rotate(8deg) translateY(0px); }
+
+    /* ── Apple App Store badge ── */
+    .apple-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #000;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.15s, border-color 0.15s;
+      width: fit-content;
+    }
+
+    .apple-badge:hover {
+      border-color: rgba(255,255,255,0.4);
+      transform: scale(0.98);
+    }
+
+    .apple-badge svg { width: 24px; height: 24px; flex-shrink: 0; }
+
+    .apple-badge-text { display: flex; flex-direction: column; line-height: 1.1; text-align: left; }
+    .apple-badge-text small { font-size: 0.62rem; opacity: 0.8; }
+    .apple-badge-text span { font-size: 1rem; font-weight: 600; letter-spacing: -0.3px; }
 
     /* ── Grid ── */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 16px;
     }
 
@@ -179,13 +314,12 @@
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 20px;
-      padding: 24px;
+      padding: 22px;
       display: flex;
       flex-direction: column;
       gap: 14px;
       backdrop-filter: blur(12px);
       transition: border-color 0.25s, background 0.25s, transform 0.25s, box-shadow 0.25s;
-      cursor: default;
     }
 
     .card:hover {
@@ -200,7 +334,6 @@
     .card.pink:hover  { box-shadow: 0 8px 32px rgba(244,114,182,0.12); border-color: rgba(244,114,182,0.3); }
     .card.yellow:hover{ box-shadow: 0 8px 32px rgba(251,191,36,0.12); border-color: rgba(251,191,36,0.3); }
 
-    /* ── Card top row ── */
     .card-top {
       display: flex;
       align-items: flex-start;
@@ -209,8 +342,8 @@
     }
 
     .app-icon {
-      width: 64px;
-      height: 64px;
+      width: 60px;
+      height: 60px;
       border-radius: 14px;
       object-fit: cover;
       box-shadow: 0 4px 20px rgba(0,0,0,0.5);
@@ -218,15 +351,15 @@
     }
 
     .app-icon-placeholder {
-      width: 64px;
-      height: 64px;
+      width: 60px;
+      height: 60px;
       border-radius: 14px;
       background: rgba(255,255,255,0.06);
       border: 1px dashed var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.6rem;
+      font-size: 1.5rem;
       flex-shrink: 0;
     }
 
@@ -250,7 +383,6 @@
       border: 1px solid rgba(107,114,128,0.2);
     }
 
-    /* ── Card body ── */
     .card-name {
       font-size: 1.05rem;
       font-weight: 700;
@@ -261,15 +393,15 @@
     .card-desc {
       font-size: 0.84rem;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.55;
       flex: 1;
     }
 
-    /* ── Category tag ── */
     .card-tag {
       font-size: 0.68rem;
       font-weight: 500;
       color: var(--muted);
+      margin-top: 4px;
     }
 
     .card-tag span {
@@ -281,28 +413,53 @@
       margin-right: 4px;
     }
 
-    /* ── Download button ── */
-    .btn-appstore {
+    /* ── Card screenshot strip ── */
+    .card-shots {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .card-shot {
+      flex: 1;
+      aspect-ratio: 9 / 19.5;
+      background: #000;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    .card-shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── Mini Apple badge for cards ── */
+    .apple-badge-mini {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 16px;
-      background: #fff;
-      color: #000;
-      border-radius: 10px;
+      background: #000;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      padding: 7px 14px;
+      border-radius: 8px;
       text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 600;
+      transition: border-color 0.15s, transform 0.15s;
       width: fit-content;
-      transition: opacity 0.15s, transform 0.15s;
       margin-top: 4px;
     }
 
-    .btn-appstore:hover { opacity: 0.88; transform: scale(0.98); }
+    .apple-badge-mini:hover { border-color: rgba(255,255,255,0.4); transform: scale(0.98); }
+    .apple-badge-mini svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .apple-badge-mini-text { display: flex; flex-direction: column; line-height: 1.1; text-align: left; }
+    .apple-badge-mini-text small { font-size: 0.55rem; opacity: 0.8; }
+    .apple-badge-mini-text span { font-size: 0.82rem; font-weight: 600; letter-spacing: -0.2px; }
 
-    .btn-appstore svg { width: 15px; height: 15px; flex-shrink: 0; }
-
-    /* ── Coming soon card dim ── */
     .card.dim { opacity: 0.7; }
     .card.dim:hover { opacity: 1; }
 
@@ -327,9 +484,17 @@
     }
 
     /* ── Responsive ── */
+    @media (max-width: 760px) {
+      .featured { padding: 28px 24px; }
+      .featured-grid { grid-template-columns: 1fr; gap: 32px; }
+      .featured-name { font-size: 1.6rem; }
+      .phone { width: 110px; }
+      .phone-2 { width: 122px; }
+    }
+
     @media (max-width: 600px) {
-      header { padding: 56px 20px 48px; }
-      .stats-row { flex-wrap: wrap; border-radius: 12px; }
+      header { padding: 56px 20px 40px; }
+      .stats-row { flex-wrap: wrap; }
       .stat { border-right: none; border-bottom: 1px solid var(--border); width: 50%; }
       .stat:nth-child(2), .stat:last-child { border-bottom: none; }
     }
@@ -359,29 +524,46 @@
 
   <main>
 
-    <!-- Live Apps -->
-    <div class="section">
+    <!-- Featured Spotlight -->
+    <div class="container">
+      <div class="featured">
+        <div class="featured-grid">
+          <div>
+            <div class="featured-pill">Featured App</div>
+            <div class="featured-app-row">
+              <img class="featured-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d8/74/8d/d8748dd8-7d2b-9147-0da6-bff6c9299fa9/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg" alt="Prismfall" />
+              <div>
+                <div class="featured-name">Prismfall</div>
+                <div class="featured-tagline">Neon block puzzle drop</div>
+              </div>
+            </div>
+            <p class="featured-desc">A satisfying neon block puzzle that's easy to learn but hard to master. Drop blocks, build combos, and clear the board across 150+ levels with daily challenges, adventure mode, and global leaderboards.</p>
+            <div class="featured-meta">
+              <span><strong>4+</strong> Age</span>
+              <span><strong>iPhone</strong> + iPad</span>
+              <span><strong>Free</strong> to play</span>
+            </div>
+            <a class="apple-badge" href="https://apps.apple.com/us/app/id6762587992" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              <span class="apple-badge-text"><small>Download on the</small><span>App Store</span></span>
+            </a>
+          </div>
+          <div class="phones">
+            <div class="phone phone-1"><img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/de/ca/19/deca1998-f89b-122c-2d99-9afc78f214a7/iphone_adventure.png/600x1300bb.webp" alt="Adventure mode" loading="lazy" /></div>
+            <div class="phone phone-2"><img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/52/50/3f/52503fc2-cdd1-e3ea-0915-804c7cf33ac5/iphone_game.png/600x1300bb.webp" alt="Gameplay" loading="lazy" /></div>
+            <div class="phone phone-3"><img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/3a/e6/da/3ae6da20-159e-02a5-0f43-854a53f91025/iphone_stats.png/600x1300bb.webp" alt="Stats" loading="lazy" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- More Live Apps -->
+    <div class="container section">
       <div class="section-header">
-        <span class="section-title">Available Now</span>
+        <span class="section-title">More from Acosta Apps</span>
         <div class="section-line"></div>
       </div>
       <div class="grid">
-
-        <div class="card blue">
-          <div class="card-top">
-            <img class="app-icon" src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/d8/74/8d/d8748dd8-7d2b-9147-0da6-bff6c9299fa9/AppIcon-0-0-1x_U007epad-0-1-85-220.png/512x512bb.jpg" alt="Prismfall" />
-            <span class="badge live">Live</span>
-          </div>
-          <div>
-            <div class="card-name">Prismfall</div>
-            <div class="card-tag" style="margin-top:4px"><span>Puzzle</span><span>Arcade</span></div>
-          </div>
-          <p class="card-desc">Drop neon blocks, build combos, and clear the board. 150+ levels, daily challenges, adventure mode, and more.</p>
-          <a class="btn-appstore" href="https://apps.apple.com/us/app/id6762587992" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            Download Free
-          </a>
-        </div>
 
         <div class="card pink">
           <div class="card-top">
@@ -390,12 +572,16 @@
           </div>
           <div>
             <div class="card-name">Quill Word Search</div>
-            <div class="card-tag" style="margin-top:4px"><span>Word</span><span>Puzzle</span></div>
+            <div class="card-tag"><span>Word</span><span>Puzzle</span></div>
           </div>
-          <p class="card-desc">A clean, satisfying word search game. No login required — just open and play. Perfect for a quick mental break.</p>
-          <a class="btn-appstore" href="https://apps.apple.com/us/app/quill-word-search/id6762587720" target="_blank" rel="noopener">
+          <p class="card-desc">A clean, satisfying word search game. No login required — just open and play.</p>
+          <div class="card-shots">
+            <div class="card-shot"><img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/11/44/e0/1144e03f-82d0-6148-79db-858a92e9c951/home.png/300x650bb.webp" alt="Quill home" loading="lazy" /></div>
+            <div class="card-shot"><img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/c2/41/de/c241de95-26c2-dfaf-73c4-0996434b6a96/onboarding.png/300x650bb.webp" alt="Quill onboarding" loading="lazy" /></div>
+          </div>
+          <a class="apple-badge-mini" href="https://apps.apple.com/us/app/quill-word-search/id6762587720" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            Download Free
+            <span class="apple-badge-mini-text"><small>Download on the</small><span>App Store</span></span>
           </a>
         </div>
 
@@ -406,12 +592,16 @@
           </div>
           <div>
             <div class="card-name">KidSpark Code Academy</div>
-            <div class="card-tag" style="margin-top:4px"><span>Education</span><span>Kids</span></div>
+            <div class="card-tag"><span>Education</span><span>Kids</span></div>
           </div>
-          <p class="card-desc">Learn to code on iPhone. Swift, Python, JavaScript &amp; more — built for kids and teens with XP, streaks, and weekly challenges.</p>
-          <a class="btn-appstore" href="https://apps.apple.com/us/app/kidspark-code-academy/id6762496898" target="_blank" rel="noopener">
+          <p class="card-desc">Learn to code on iPhone. Swift, Python, JavaScript &amp; more — built for kids and teens.</p>
+          <div class="card-shots">
+            <div class="card-shot"><img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/9f/c2/db/9fc2dbc9-e8de-0d06-cd22-f9371afee0ad/01-home.png/300x650bb.webp" alt="KidSpark home" loading="lazy" /></div>
+            <div class="card-shot"><img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/f2/82/50/f28250a9-8684-f0cd-bf10-c31f2bbb5407/02-lesson.png/300x650bb.webp" alt="KidSpark lesson" loading="lazy" /></div>
+          </div>
+          <a class="apple-badge-mini" href="https://apps.apple.com/us/app/kidspark-code-academy/id6762496898" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            Download Free
+            <span class="apple-badge-mini-text"><small>Download on the</small><span>App Store</span></span>
           </a>
         </div>
 
@@ -422,12 +612,16 @@
           </div>
           <div>
             <div class="card-name">Ola: Period &amp; Cycle Tracker</div>
-            <div class="card-tag" style="margin-top:4px"><span>Health</span><span>Lifestyle</span></div>
+            <div class="card-tag"><span>Health</span><span>Lifestyle</span></div>
           </div>
-          <p class="card-desc">A private, simple cycle tracker. All data stays on your device — no accounts, no servers, no tracking. Just you.</p>
-          <a class="btn-appstore" href="https://apps.apple.com/us/app/ola-period-cycle-tracker/id6762284323" target="_blank" rel="noopener">
+          <p class="card-desc">A private, simple cycle tracker. All data stays on your device — no accounts, no servers.</p>
+          <div class="card-shots">
+            <div class="card-shot"><img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/91/c6/a7/91c6a75f-ca7e-d5e9-1125-373388e140ca/ola-iphone-v13-01-today-hero.png/300x650bb.webp" alt="Ola today" loading="lazy" /></div>
+            <div class="card-shot"><img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/22/42/b2/2242b2f9-411b-6af0-4fdb-1e14bfc1f6f8/ola-iphone-v13-02-tap-to-log.png/300x650bb.webp" alt="Ola log" loading="lazy" /></div>
+          </div>
+          <a class="apple-badge-mini" href="https://apps.apple.com/us/app/ola-period-cycle-tracker/id6762284323" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            Download Free
+            <span class="apple-badge-mini-text"><small>Download on the</small><span>App Store</span></span>
           </a>
         </div>
 
@@ -435,7 +629,7 @@
     </div>
 
     <!-- Coming Soon -->
-    <div class="section">
+    <div class="container section">
       <div class="section-header">
         <span class="section-title">Coming Soon</span>
         <div class="section-line"></div>
@@ -449,7 +643,7 @@
           </div>
           <div>
             <div class="card-name">Liquid Alchemy</div>
-            <div class="card-tag" style="margin-top:4px"><span>Puzzle</span><span>Strategy</span></div>
+            <div class="card-tag"><span>Puzzle</span><span>Strategy</span></div>
           </div>
           <p class="card-desc">A color-mixing liquid sort puzzle. Combine primary colors to discover new ones and solve increasingly clever flask challenges.</p>
         </div>
@@ -461,7 +655,7 @@
           </div>
           <div>
             <div class="card-name">Neon Mahjong</div>
-            <div class="card-tag" style="margin-top:4px"><span>Puzzle</span><span>Classic</span></div>
+            <div class="card-tag"><span>Puzzle</span><span>Classic</span></div>
           </div>
           <p class="card-desc">Classic Mahjong Solitaire reimagined with a glowing neon aesthetic. Solvable boards, daily challenges, and multiple layouts.</p>
         </div>
