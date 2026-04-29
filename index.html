@@ -337,46 +337,65 @@
     /* App grid */
     .app-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 22px;
     }
 
     .app-card {
-      background: var(--card-bg, var(--card-blue));
-      border-radius: 22px;
-      padding: 22px 20px 0;
+      background:
+        linear-gradient(165deg, var(--card-bg-2, var(--card-blue-2)) 0%, var(--card-bg, var(--card-blue)) 60%);
+      border-radius: 28px;
+      padding: 28px 26px 0;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      min-height: 380px;
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.35s ease;
+      min-height: 520px;
       position: relative;
+      isolation: isolate;
     }
+
+    /* Soft radial highlight in the upper-right of each card */
+    .app-card::before {
+      content: "";
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .app-card > * { position: relative; z-index: 1; }
 
     .app-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.18);
+      transform: translateY(-8px);
+      box-shadow: 0 30px 60px -16px rgba(0,0,0,0.22);
     }
 
-    .app-card.pink     { --card-bg: var(--card-pink); }
-    .app-card.mint     { --card-bg: var(--card-mint); }
-    .app-card.lavender { --card-bg: var(--card-lavender); }
-    .app-card.blue     { --card-bg: var(--card-blue); }
-    .app-card.peach    { --card-bg: var(--card-peach); }
-    .app-card.cream    { --card-bg: var(--card-cream); }
+    .app-card.pink     { --card-bg: var(--card-pink);     --card-bg-2: var(--card-pink-2); }
+    .app-card.mint     { --card-bg: var(--card-mint);     --card-bg-2: var(--card-mint-2); }
+    .app-card.lavender { --card-bg: var(--card-lavender); --card-bg-2: var(--card-lavender-2); }
+    .app-card.blue     { --card-bg: var(--card-blue);     --card-bg-2: var(--card-blue-2); }
+    .app-card.peach    { --card-bg: var(--card-peach);    --card-bg-2: var(--card-peach-2); }
+    .app-card.cream    { --card-bg: var(--card-cream);    --card-bg-2: var(--card-cream-2); }
 
     .app-cat {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      background: rgba(255,255,255,0.6);
-      padding: 5px 12px;
+      gap: 7px;
+      background: rgba(255,255,255,0.75);
+      padding: 6px 14px;
       border-radius: 999px;
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-weight: 600;
       color: var(--ink-light);
       width: fit-content;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
 
     .app-cat-dot {
@@ -392,53 +411,84 @@
     .app-card.cream    .app-cat-dot { background: #f59e0b; }
 
     .app-name {
-      font-size: 1.2rem;
+      font-size: 1.45rem;
       font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 8px;
+      letter-spacing: -0.7px;
+      margin-bottom: 10px;
+      line-height: 1.15;
     }
 
     .app-desc {
-      font-size: 0.82rem;
+      font-size: 0.88rem;
       color: var(--muted-on-light);
-      line-height: 1.55;
-      margin-bottom: 16px;
-      flex: 1;
+      line-height: 1.6;
+      margin-bottom: 18px;
+      max-width: 30ch;
     }
 
     .app-link {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 600;
       color: var(--ink-light);
-      padding: 8px 14px;
-      background: rgba(255,255,255,0.7);
+      padding: 9px 16px;
+      background: rgba(255,255,255,0.85);
       border-radius: 999px;
       width: fit-content;
-      margin-bottom: 16px;
-      transition: background 0.15s, transform 0.15s;
+      margin-bottom: 22px;
+      transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
 
-    .app-link:hover { background: #fff; transform: translateX(2px); }
+    .app-link:hover {
+      background: #fff;
+      transform: translateX(3px);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
 
+    /* ── Phone mockup inside card ── */
     .app-shot-wrap {
       margin-top: auto;
-      margin-left: -8px;
-      margin-right: -8px;
+      margin-left: -26px;
+      margin-right: -26px;
       display: flex;
       justify-content: center;
+      align-items: flex-end;
       padding-top: 8px;
+      transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .app-card:hover .app-shot-wrap {
+      transform: translateY(-6px) scale(1.03);
     }
 
     .app-shot {
-      width: 145px;
+      width: 215px;
       aspect-ratio: 9 / 19.5;
-      background: #000;
-      border-radius: 22px 22px 0 0;
-      padding: 4px 4px 0;
-      box-shadow: 0 12px 30px -8px rgba(0,0,0,0.25);
+      background: #0a0a18;
+      border-radius: 32px 32px 0 0;
+      padding: 6px 6px 0;
+      box-shadow:
+        0 -4px 0 rgba(0,0,0,0.04),
+        0 24px 50px -12px rgba(0,0,0,0.32),
+        0 0 0 1px rgba(0,0,0,0.06);
+      position: relative;
+    }
+
+    /* Subtle notch detail at the top of the phone */
+    .app-shot::before {
+      content: "";
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 6px;
+      background: rgba(255,255,255,0.08);
+      border-radius: 3px;
+      z-index: 2;
     }
 
     .app-shot img {
@@ -446,18 +496,21 @@
       height: 100%;
       object-fit: cover;
       object-position: top;
-      border-radius: 18px 18px 0 0;
+      border-radius: 26px 26px 0 0;
       display: block;
     }
 
     .app-shot.placeholder {
-      background: rgba(255,255,255,0.5);
-      border: 1px dashed rgba(0,0,0,0.15);
+      background: rgba(255,255,255,0.55);
+      border: 1.5px dashed rgba(0,0,0,0.2);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
+      font-size: 3rem;
+      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.15);
     }
+
+    .app-shot.placeholder::before { display: none; }
 
     /* ──────────────────────────────────────────────────────── */
     /* STATS BAR */
