@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://anulfito1991-wq.github.io/sitemap.xml

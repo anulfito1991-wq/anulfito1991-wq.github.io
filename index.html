@@ -4,7 +4,36 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Acosta Apps — iOS Apps by Anulfo Acosta</title>
-  <meta name="description" content="Independent iOS apps crafted by Anulfo Acosta. Puzzle, word, education, lifestyle. Free on the App Store." />
+  <meta name="description" content="Independent iOS apps crafted by Anulfo Acosta. Wellness, productivity, puzzles & games. Private by design, free on the App Store." />
+  <meta name="author" content="Anulfo Acosta" />
+  <meta name="theme-color" content="#0a0a18" />
+  <link rel="canonical" href="https://anulfito1991-wq.github.io/" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+  <!-- Open Graph (Facebook, Reddit, iMessage, LinkedIn) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Acosta Apps" />
+  <meta property="og:title" content="Acosta Apps — 11 hand-crafted iOS apps" />
+  <meta property="og:description" content="Independent iOS apps by Anulfo Acosta — wellness, productivity, puzzles & games. Private by design, free on the App Store." />
+  <meta property="og:url" content="https://anulfito1991-wq.github.io/" />
+  <meta property="og:image" content="https://anulfito1991-wq.github.io/images/og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Acosta Apps — 11 hand-crafted iOS apps, free on the App Store" />
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Acosta Apps — 11 hand-crafted iOS apps" />
+  <meta name="twitter:description" content="Independent iOS apps — private by design, free on the App Store." />
+  <meta name="twitter:image" content="https://anulfito1991-wq.github.io/images/og-cover.png" />
+
+  <!-- Preload above-the-fold hero art for faster LCP -->
+  <link rel="preload" as="image" href="images/ola.png" />
+  <link rel="preload" as="image" href="images/quill.png" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -815,7 +844,31 @@
       .view-all { display: none; }
       .light-head { text-align: left; }
     }
+    /* "NEW" ribbon for recently launched apps */
+    .app-card { position: relative; }
+    .app-new-badge {
+      position: absolute; top: 14px; right: 14px;
+      background: linear-gradient(135deg, var(--grad-1), var(--grad-3));
+      color: #fff; font-size: 11px; font-weight: 800; letter-spacing: .06em;
+      padding: 4px 10px; border-radius: 999px; text-transform: uppercase;
+      box-shadow: 0 2px 8px rgba(0,0,0,.25);
+    }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Acosta Apps",
+    "alternateName": "Anulfo Acosta",
+    "url": "https://anulfito1991-wq.github.io/",
+    "logo": "https://anulfito1991-wq.github.io/apple-touch-icon.png",
+    "image": "https://anulfito1991-wq.github.io/images/og-cover.png",
+    "description": "Independent iOS apps spanning wellness, productivity, puzzles and games — private by design, free on the App Store.",
+    "founder": { "@type": "Person", "name": "Anulfo Acosta" },
+    "address": { "@type": "PostalAddress", "addressRegion": "FL", "addressCountry": "US" },
+    "sameAs": ["https://github.com/anulfito1991-wq", "https://apps.apple.com/developer/anulfo-acosta/id6762284322"]
+  }
+  </script>
 </head>
 <body>
 
@@ -870,10 +923,10 @@
       </div>
       <div class="hero-phones">
         <div class="hero-phone hero-phone-1">
-          <img src="images/ola.png" alt="Ola" loading="lazy" />
+          <img src="images/ola.png" alt="Ola" fetchpriority="high" />
         </div>
         <div class="hero-phone hero-phone-2">
-          <img src="images/quill.png" alt="Quill Word Search" loading="lazy" />
+          <img src="images/quill.png" alt="Quill Word Search" fetchpriority="high" />
         </div>
       </div>
     </div>
@@ -893,6 +946,7 @@
 
         <!-- Sober Habit -->
         <div class="app-card cream">
+          <span class="app-new-badge">New</span>
           <span class="app-cat"><span class="app-cat-dot"></span>Health &amp; Fitness</span>
           <div class="app-name">Sober Habit</div>
           <p class="app-desc">Track drinks, see your patterns, and drink less &mdash; private, on-device, with an AI pattern coach.</p>
@@ -932,6 +986,7 @@
 
         <!-- GLP-1 Coach -->
         <div class="app-card" style="--card-bg:#eef6ee;--card-bg-2:#d7ebd9;">
+          <span class="app-new-badge">New</span>
           <span class="app-cat"><span class="app-cat-dot" style="background:#2f9e44;"></span>Health &amp; Fitness</span>
           <div class="app-name">GLP-1 Coach</div>
           <p class="app-desc">A private journal for Ozempic, Wegovy, Zepbound &amp; more. Track shots, side effects &amp; weight with on-device AI insights &mdash; nothing leaves your phone.</p>
@@ -945,6 +1000,7 @@
 
         <!-- Tether Companion -->
         <div class="app-card" style="--card-bg:#fdf4e7;--card-bg-2:#fce8c8;">
+          <span class="app-new-badge">New</span>
           <span class="app-cat"><span class="app-cat-dot" style="background:#d97706;"></span>Productivity</span>
           <div class="app-name">Tether Companion</div>
           <p class="app-desc">On-device AI accountability companion for ADHD — body-double sessions, daily check-ins, no cloud.</p>
@@ -956,6 +1012,7 @@
 
         <!-- CoHalve -->
         <div class="app-card" style="--card-bg:#eaf4f1;--card-bg-2:#d3e8e1;">
+          <span class="app-new-badge">New</span>
           <span class="app-cat"><span class="app-cat-dot" style="background:#1a6b6b;"></span>Finance</span>
           <div class="app-name">CoHalve</div>
           <p class="app-desc">Co-parenting expense tracker — log shared kid costs, split any way, and export court-ready PDFs. Free to start.</p>
@@ -1050,7 +1107,7 @@
         <div class="stats-bar-inner">
           <div class="stat-item">
             <div class="stat-icon">📱</div>
-            <div class="stat-text"><strong>9</strong><small>Apps Live</small></div>
+            <div class="stat-text"><strong>11</strong><small>Apps Live</small></div>
           </div>
           <div class="stat-item">
             <div class="stat-icon">⏳</div>
@@ -1144,24 +1201,27 @@
 
         <div class="footer-col">
           <h4>Legal</h4>
-          <a href="https://anulfito1991-wq.github.io/NeonBlocks/privacy.html" target="_blank" rel="noopener">Privacy</a>
+          <a href="/privacy.html" rel="noopener">Privacy</a>
           <a href="mailto:hello@acostaapps.com">Contact</a>
         </div>
 
         <div class="footer-newsletter">
           <h4>Stay in the loop</h4>
-          <p>Get occasional updates when a new app ships.</p>
-          <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Newsletter coming soon — follow on Facebook for now.');">
-            <input type="email" placeholder="your@email.com" required />
+          <p>New apps ship often. Get an email when the next one launches.</p>
+          <!-- Works today via mailto. To upgrade to managed capture: sign up at formspree.io,
+               then set action="https://formspree.io/f/YOUR_ID" method="POST" and remove enctype. -->
+          <form class="newsletter-form" action="mailto:hello@acostaapps.com" method="POST" enctype="text/plain">
+            <input type="email" name="subscriber" placeholder="your@email.com" required />
             <button type="submit">Subscribe</button>
           </form>
+          <p style="font-size:12px;opacity:.6;margin-top:8px;">Prefer not to use the form? Email <a href="mailto:hello@acostaapps.com?subject=Notify%20me%20about%20new%20apps" style="color:inherit;text-decoration:underline;">hello@acostaapps.com</a>.</p>
         </div>
       </div>
 
       <div class="footer-bottom">
         <span>© 2026 Acosta Apps · All rights reserved</span>
         <span>
-          <a href="https://anulfito1991-wq.github.io/NeonBlocks/privacy.html" target="_blank" rel="noopener">Privacy</a>
+          <a href="/privacy.html" rel="noopener">Privacy</a>
           <a href="mailto:hello@acostaapps.com">Contact</a>
           <a href="https://github.com/anulfito1991-wq" target="_blank" rel="noopener">GitHub</a>
         </span>
